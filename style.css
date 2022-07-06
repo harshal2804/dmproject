@@ -1,0 +1,75 @@
+*{
+    margin: 10px;
+    padding: 0;
+}
+
+body{
+    background-image: url('background.jpg');
+}
+
+.Encryption{
+    height: 130vh;
+    margin: 35px 196px;
+}
+.text-center{
+    background-color: aqua;
+    text-align: center;
+    margin: 33px 400px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 35px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 30px;
+}
+
+.form{
+    max-width: 870px;
+    margin: -30px auto;
+}
+
+.form-input{
+    width: 100%;
+    padding: 5px 3px;
+    font-size: 19px;
+    border: 2px solid grey;
+    border-radius: 9px;
+    margin: 3px 0;
+}
+
+.btn{
+    border: 2px solid black;
+    padding: 9px 17px;
+    margin: 21px 392px;
+    border-radius: 100px;
+    color: black;
+    cursor: pointer;
+    font-family: 'Ubuntu',sans-serif;
+    font-size: 17px;
+}
+
+.msg{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 30px;
+}
+
+.output{
+    background-color: white;
+    border: 2px solid grey;
+    border-radius: 9px;
+}
+
+.text{
+    margin: 11px;
+    text-align: left;
+    font-family: Ubuntu, sans-serif;
+    font-size: 20px;
+    background-color: aqua;
+    padding: 7px;
+    margin-top: 25px;
+}
+
+.Decryption{
+    height: 130vh;
+    margin: 35px 196px;
+    margin-top: 180px;
+}
