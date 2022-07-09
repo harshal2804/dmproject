@@ -8,17 +8,23 @@ var key2 = document.getElementById("key2");
 var button2 = document.getElementById("btn2");
 var op2 = document.getElementById("dec");
 
+var button3 = document.getElementById("cpy");
+
 function temp2() {
     split(string.value);
 }
 
 function temp() {
      merge(string2.value);
-     merge(string2.value);
+     if(string.value.length<8){
+        merge(string2.value);
+     }
 }
 
 button.addEventListener('click', temp2);
 button2.addEventListener('click',temp);
+button3.addEventListener('click', cpy)
+
 
 var p = [
     "243f6a88", "85a308d3", "13198a2e", "03707344", "a4093822",
@@ -41,6 +47,18 @@ function xor(a, b) {
         int =  ((int)>>>0).toString(16);
         int = "00000000" + int;
         return int.substring(int.length-8);
+    }
+}
+
+function xor2(a, b) {
+    var int = parseInt(a,16)^parseInt(b,16);
+
+    if (int>0) {
+        int = int.toString(16);
+        return int;
+    } else {
+        int =  ((int)>>>0).toString(16);
+        return int;
     }
 }
 
@@ -153,6 +171,7 @@ function split(plaintext){
             final = final + encrypt(arr[j]);
         }
         op.innerHTML = final;
+        subkey(key.value);
     }
 
     
@@ -165,8 +184,9 @@ function decrypt(text){
 
     var right = text.substring(0,8);
     var left = text.substring(8,16);
-    right = xor(right,p[1]);
-    left = xor(left,p[0]);
+    right = xor2(right,p[1]);
+    left = xor2(left,p[0]);
+    
     
     return left+right;
 }
@@ -180,15 +200,13 @@ function hex2string(hex) {
     return str;
 }
 
+
+
 function merge(ciphertext) {
+
     subkey(key2.value);
     var arr3 = [];
-    var len = ciphertext.length;
-
-    if(len<16){
-        op2.innerHTML = hex2string(decrypt(ciphertext));
-    }
-    else{
+    
         var j = ciphertext.length;
         var k =0;
         for (var i =0; j>0; i++,j-=16) {
@@ -200,5 +218,20 @@ function merge(ciphertext) {
             final = final + hex2string(decrypt(arr3[j]));
         }
         op2.innerHTML = final;
-    }
+    
 }
+
+function cpy() {
+    /* Get the text field */
+    var copyText = document.getElementById("enc");
+  
+    /* Select the text field */
+    copyText.select(); 
+    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+  
+     /* Copy the text inside the text field */
+    navigator.clipboard.writeText(copyText.value);
+  
+    /* Alert the copied text */
+    //alert("Copied the text: " + copyText.value);
+  }
